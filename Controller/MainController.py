@@ -7,6 +7,7 @@ class MainController:
 
     def __init__(self):
         self.controller = self
+        self.option = 0
 
     def printMain():
 

@@ -14,9 +14,9 @@ class LeagueController:
 
     def getData(self):
         if self.option == '1':
-            self.LeagueModel.getPlayerStats()
+            self.LeagueModel.findPlayerStats()
         elif self.option == '2':
-            self.LeagueModel.getConferenceStats()
+            self.LeagueModel.findConferenceStats()
         else:
             print('err')
 
