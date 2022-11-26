@@ -9,7 +9,6 @@ class MainController:
         self.controller = self
 
     def printMain():
-
         print('League stats')
 
     def printLeague():
