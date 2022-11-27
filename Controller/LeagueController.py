@@ -9,28 +9,23 @@ class LeagueController:
     def __init__(self):
         self.LeagueView = LeagueView()
         self.LeagueModel = LeagueModel()
-        
-    def menuPrompt(self):
-       return self.LeagueView.displayMainMenu()
 
-    def getData(self, dataOption):
-        if dataOption == '1':
-            self.LeagueModel.findPlayerStats()
-            self.LeagueView.displayPlayerInfo(self.LeagueModel.getPlayerStats())
+    def getData(self):
+        year = self.LeagueView.getYearPrompt()
+        if year == '0':
+            return
 
-        elif dataOption == '2':
-            year, conference = self.LeagueView.displayConferenceInfoPrompt()
-            self.LeagueModel.findConferenceStats(year, conference)
-            self.LeagueView.displayConferenceInfo(self.LeagueModel.getConferenceStats())
+        conference = self.LeagueView.getConferencePrompt()
+        if conference == '0':
+            return
 
-        else:
-            print('err')
+        self.LeagueModel.findConferenceStats(year, conference)
+        self.LeagueView.displayConferenceInfo(self.LeagueModel.getConferenceStats())
 
 
 def main():
     league = LeagueController()
-    option = league.menuPrompt()
-    league.getData(option)
+    league.getData()
 
 if __name__ == "__main__":
     main()
