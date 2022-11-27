@@ -1,53 +1,36 @@
 #Controller for Player View
 #Aidan David (251083708)
 
-from Model import PlayerModel
-from View import PlayerView
+import sys, os
+parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+sys.path.append(parentddir)
+from View.PlayerView import PlayerView
+from Model.PlayerModel import PlayerModel
+
 class PlayerController:
-    pMod = "x"
-    pView = "x"
-    inp = "x"
 
     def __init__(self):
-        self.pView = PlayerView();
-        self.inp = self.pView.search();
-        self.pMod = PlayerModel(self.inp);
+        self.pView = PlayerView()
+        self.pMod = PlayerModel()
 
-    def getName(self):
-        return self.pView.name
+    def namePrompt(self):
+        self.inp = self.pView.promptUser()
 
-    def getPosition(self):
-        return self.pView.pos
+    def setModel(self):
+        self.worked = self.pMod.setPlayer(self.inp)
 
-    def getAge(self):
-        return self.pView.age
+    def getInput(self):
+        return self.inp
 
-    def getTeam(self):
-        return self.pView.team
+    def printPlayer(self):
+        self.pView.printPlayer(self.pMod)
 
-    def getNumber(self):
-        return self.pView.num
+    def getWorked(self):
+        return self.worked
 
-    def getHeight(self):
-        return self.pView.hght
+cont = PlayerController()
+cont.namePrompt()
+cont.setModel()
+if(cont.getWorked() == True):
+    cont.printPlayer()
 
-    def getPoints(self):
-        return self.pView.pts
-
-    def getAssists(self):
-        return self.pView.ats
-
-    def getSteals(self):
-        return self.pView.stls
-
-    def getRebounds(self):
-        return self.pView.rbs
-
-    def getBlocks(self):
-        return self.pView.blks
-
-    def getTurnOvers(self):
-        return self.pView.tos
-
-    def getPlusMinus(self):
-        return self.pView.pm
