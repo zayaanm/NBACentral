@@ -21,11 +21,3 @@ class LeagueController:
 
         self.LeagueModel.findConferenceStats(year, conference)
         self.LeagueView.displayConferenceInfo(self.LeagueModel.getConferenceStats())
-
-
-def main():
-    league = LeagueController()
-    league.getData()
-
-if __name__ == "__main__":
-    main()

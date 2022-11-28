@@ -3,11 +3,11 @@ from prettytable import PrettyTable
 class LeagueView:
 
     def getYearPrompt(self):
-        print("Select a year to get data for:\n0.Go back to main menu\n1.2022\n2.2021\n3.2020\n4.2019\n5.2018\n6.2017\n7.2016\n8.2015")
+        print("Select a year to get data for by choosing a number:\n0. Go back to main menu\n1. 2022\n2. 2021\n3. 2020\n4. 2019\n5. 2018")
         year = input('->')
 
-        while year != '8' and year != '7' and year != '6' and year != '5' and year != '4' and year != '3' and year != '2' and year != '1' and year != '0':
-            print('Invalid selection. Please select a year to get data for:\n1.2022\n2.2021\n3.2020\n4.2019\n5.2018\n6.2017\n7.2016\n8.2015')
+        while year != '5' and year != '4' and year != '3' and year != '2' and year != '1' and year != '0':
+            print('Invalid selection. Please select a year to get data for by choosing a number:\n0. Go back to main menu\n1. 2022\n2. 2021\n3. 2020\n4. 2019\n5. 2018')
             year = input('->')
 
         if year == '1':
@@ -31,11 +31,11 @@ class LeagueView:
 
     
     def getConferencePrompt(self):
-        print("Select a conference to get data for:\n0.Go back to main menu\n1.Eastern\n2.Western")
+        print("Select a conference to get data for by choosing a number:\n0. Go back to main menu\n1. Eastern\n2. Western")
         conference = input('->')
 
         while conference != '1' and conference != '2' and conference != '0':
-            print('Invalid selection. Please select a conference to get data for:\n1.Eastern\n2.Western')
+            print('Invalid selection. Please select a conference to get data for by choosing a number:\n1. Eastern\n2. Western')
             conference = input('->')
 
         if conference == '1':
@@ -53,7 +53,7 @@ class LeagueView:
     def displayConferenceInfo(self,info):
         conferenceTable = PrettyTable()
 
-        conferenceTable.field_names = ["Team Name", "Rank", "Wins", "Losses", "Win Percent"]
+        conferenceTable.field_names = [ "Rank", "Team Name", "Wins", "Losses", "Win Percent"]
         
         for element in info:
             conferenceTable.add_row([int(element['rank']), element['fullName'], element['wins'], element['losses'], element['winPercent']])
