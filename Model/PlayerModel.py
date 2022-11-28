@@ -1,16 +1,28 @@
 #Model For Player View
 #Aidan David (251083708)
 
+import json
+import requests
+import sys, os
+parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+sys.path.append(parentddir)
+
 class PlayerModel:
 
+    def __init__(self):
+        pass
+
     def setPlayer(self, pName):
-        found = True
 
-        #api call name
-        if(1 == 1):  #this is going to be a flip for when api call is successful
-            found = True
+        per = {"name": str(pName), "team": "1", "season": "2021"}
 
-        if(found == False):
+        pArray = self.APICall(per)
+        pArray = self.APICall(per)
+        pArray = self.APICall(per)
+
+        print(pArray)
+
+        if(pArray == False):
             return False
 
         self.name = 'y'
@@ -28,6 +40,23 @@ class PlayerModel:
         self.pm = "y"
 
         return True
+
+    def APICall(self, parameters):
+
+        headers = {
+            "X-RapidAPI-Key": "bc1b759fdfmshb77a2031d4430cbp1169cfjsn62a876e90d2a",
+            "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
+        }
+
+        response = requests.get("https://api-nba-v1.p.rapidapi.com/players", headers=headers, params=parameters)
+        print(response.text)
+
+        if response.status_code != 200:
+            return False
+
+        pArray = json.loads(json.dumps(response.json()))
+
+        return pArray
 
     def getName(self):
         return self.name
