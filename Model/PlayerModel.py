@@ -17,8 +17,6 @@ class PlayerModel:
         per = {"name": str(pName), "team": "1", "season": "2021"}
 
         pArray = self.APICall(per)
-        pArray = self.APICall(per)
-        pArray = self.APICall(per)
 
         print(pArray)
 
