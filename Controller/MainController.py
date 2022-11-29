@@ -1,6 +1,11 @@
+import sys, os
+parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+sys.path.append(parentddir)
 from Model.MainModel import MainModel
 from View.MainView import MainView
 from Controller.LeagueController import LeagueController
+from Controller.NewsController import NewsController
+
 
 
 class MainController:
