@@ -4,13 +4,14 @@ sys.path.append(parentddir)
 from Model.MainModel import MainModel
 from View.MainView import MainView
 from Controller.LeagueController import LeagueController
+from Controller.NewsController import NewsController
+
 
 
 class MainController:
 
     def __init__(self):
         self.controller = self
-        self.option = 0
 
     def printMain():
 
