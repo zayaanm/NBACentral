@@ -4,25 +4,42 @@ sys.path.append(parentddir)
 from Model.MainModel import MainModel
 from View.MainView import MainView
 from Controller.LeagueController import LeagueController
-from Controller.NewsController import NewsController
+#from Controller.NewsController import NewsController
 
 
 
 class MainController:
 
     def __init__(self):
-        self.controller = self
+        self.MainView = MainView()
+        self.MainModel = MainModel()
+        self.LeagueController = LeagueController()
+        
+        #self.NewsController = NewsController()
 
-    def printMain():
 
-        print('League stats')
+    def Menu(self):
+        while(True):
+            option = self.MainView.getUserOption()
+            if option == '0':
+                exit()
+            self.selectController(option)
 
-    def printLeague():
-        LeagueController.method()
-        print('League stats')
 
-    def printPlayer():
-        print('League stats')
+    def selectController(self, option):
+        if option == '1':
+            self.passToLeague()
 
-    def printNews():
-        print('League stats')
+
+    def passToLeague(self):
+        self.LeagueController.showConferenceStats()
+
+
+def main():
+    mainController = MainController()
+    mainController.Menu()
+
+
+if __name__ == '__main__':
+    main()
+
