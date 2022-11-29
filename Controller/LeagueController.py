@@ -10,7 +10,7 @@ class LeagueController:
         self.LeagueView = LeagueView()
         self.LeagueModel = LeagueModel()
 
-    def getData(self):
+    def showConferenceStats(self):
         year = self.LeagueView.getYearPrompt()
         if year == '0':
             return
