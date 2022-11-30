@@ -8,7 +8,9 @@ from Model.TeamModel import TeamModel
 
 class TeamController():
 
-    def __init__(self,view,model):
+    def __init__(self):
+        view = TeamView()
+        model = TeamModel()
         self.view = view
         self.model = model
 
