@@ -4,27 +4,27 @@ sys.path.append(parentddir)
 from View.TeamView import TeamView
 from Model.TeamModel import TeamModel
 
+#controller class for the team option
+
 class TeamController():
 
-    def __init__(self,view,model):
+    def __init__(self):
+        view = TeamView()
+        model = TeamModel()
         self.view = view
         self.model = model
 
+    #method that runs the class
     def controller(self):
         
         userResponse = self.view.getTeam()
 
+        #q was selelcted to be the exit option, change to anything else if you would like
+        #this while loop will keep displaying the user-selected teams until they would like to go back to the main menu
         while (userResponse != 'q'):
 
             teamPlayers = self.model.getTeamPlayers(userResponse)
             self.view.displayTeam(teamPlayers)
             userResponse = self.view.getTeam()
-
-if __name__ == "__main__":
-    view = TeamView()
-    model = TeamModel()
-    t = TeamController(view, model)
-    t.controller()
-
 
 
