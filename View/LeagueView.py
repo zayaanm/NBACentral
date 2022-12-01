@@ -61,6 +61,7 @@ class LeagueView:
         conferenceTable.sortby = 'Rank'
 
         print(conferenceTable)
+        input('Press return to continue\n')
 
     
     
