@@ -41,10 +41,12 @@ class MainController:
     def passToTeam(self):
         self.TeamController.controller()
 
+    def printMain():
+        print('League stats')
 
-def main():
-    mainController = MainController()
-    mainController.Menu()
+    def main():
+        mainController = MainController()
+        mainController.Menu()
 
 
 if __name__ == '__main__':
