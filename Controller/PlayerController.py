@@ -24,11 +24,11 @@ class PlayerController:
 
     def getInput(self):
         return self.inp
+    
+    def showPlayer(self):
+        self.namePrompt()
+        self.setModel()
+        self.printPlayer()
 
-cont = PlayerController()
-cont.namePrompt()
-while(cont.getInput() != False):
-    cont.setModel()
-    cont.printPlayer()
-    cont.namePrompt()
+
 

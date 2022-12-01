@@ -1,3 +1,5 @@
+from prettytable import PrettyTable
+
 class NewsView:
 
     def getAllOrTeamPrompt(self):

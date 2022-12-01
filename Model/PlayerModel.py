@@ -1,19 +1,16 @@
-#Model For Player View
-#Aidan David (251083708)
-
-import json
-import requests
 import sys, os
 parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 sys.path.append(parentddir)
+from Helper.ApiCaller import ApiCaller
 
 class PlayerModel:
 
     def __init__(self):
-        pass
+        self.ApiCaller = ApiCaller()
+        
 
     def setPlayer(self, inp):
-        pArray = self.APICall("https://api-nba-v1.p.rapidapi.com/players", {"name": str(inp[0]), "team": str(inp[1]), "season": "2021"})
+        pArray = self.ApiCaller.rapidApiCalltoDict("https://api-nba-v1.p.rapidapi.com/players", {"name": str(inp[0]), "team": str(inp[1]), "season": "2021"})
 
         if pArray == False:
             return 0
@@ -52,21 +49,5 @@ class PlayerModel:
 
                 player.append(x.get("leagues").get("standard").get("pos"))
                 pArray.append(player)
-
-        return pArray
-
-    def APICall(self, url, para):       #literally makes the API call
-
-        headers = {
-            "X-RapidAPI-Key": "bc1b759fdfmshb77a2031d4430cbp1169cfjsn62a876e90d2a",
-            "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
-        }
-
-        response = requests.get(url, headers=headers, params=para)
-
-        if response.status_code != 200:
-            return False
-
-        pArray = json.loads(json.dumps(response.json()))
 
         return pArray

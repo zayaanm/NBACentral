@@ -24,5 +24,3 @@ class NewsController:
 
         if(newsPrompt == '3'):
             pass
-a = NewsController()
-a.showNews()

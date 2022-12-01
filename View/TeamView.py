@@ -1,10 +1,11 @@
 #View class for team option
+from prettytable import PrettyTable
 
 class TeamView:
     
     #Gets the user input for team they want information for
     def getTeam(self):
-        team = input("Please Enter A Team, Enter q to go back to the main menu:")
+        team = input("Please enter a team. Enter q to go back to the main menu:")
         return team
 
     #displays the user-selected team, shows error message based on the error
@@ -20,13 +21,11 @@ class TeamView:
 
         #api finds user-selected team and displays it
         else: 
-            
-            #format string for the table
-            outputStr = "|{0:10s}|-----|{1:15s}|-----|{2:10s}|-----|{3:14s}|-----|{4:6s}|-----|{5:6s}|-----|{6:3}|-----|{7:8s}|"
-            
-            #header for the table
-            print(outputStr.format("First Name", "Last Name", "DOB", "Country", "Height", "Weight", "No.", "Position"))
-            
-            #printing out each player thats returned in the team list (which is a 2D array)
+
+            table = PrettyTable()
+            table.field_names = ["First Name", "Last Name", "DOB", "Country", "Height", "Weight", "No.", "Position"]
+
             for player in team:
-                print(outputStr.format(*player))
+                table.add_row([*player])
+
+            print(table)

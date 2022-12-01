@@ -1,10 +1,7 @@
-#Implementation of Player View
-#Aidan David (251083708)
-
 import sys, os
 parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 sys.path.append(parentddir)
-from Model.PlayerModel import PlayerModel
+from prettytable import PrettyTable
 
 class PlayerView:
     def promptUser(self):
@@ -30,9 +27,12 @@ class PlayerView:
             print("Player not found, please enter a valid last name/team ID combination\n")
 
         else:       #successful print
+            
+            playerTable = PrettyTable()
+            playerTable.field_names = ["First Name", "Last Name", "DOB", "Country", "Height", "Weight", "No.", "Position"]
 
-            outputStr = "|{0:10s}|-----|{1:15s}|-----|{2:10s}|-----|{3:14s}|-----|{4:6s}|-----|{5:6s}|-----|{6:3}|-----|{7:8s}|"
-
-            print(outputStr.format("First Name", "Last Name", "DOB", "Country", "Height", "Weight", "No.", "Position"))
             for player in pArray:
-                print(outputStr.format(*player))
+                playerTable.add_row([*player])
+
+            print(playerTable)
+            input('Press return to continue\n')
