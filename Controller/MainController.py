@@ -5,7 +5,8 @@ from Model.MainModel import MainModel
 from View.MainView import MainView
 from Controller.LeagueController import LeagueController
 from Controller.TeamController import TeamController
-#from Controller.NewsController import NewsController
+from Controller.NewsController import NewsController
+from Controller.PlayerController import PlayerController
 
 
 
@@ -16,8 +17,8 @@ class MainController:
         self.MainModel = MainModel()
         self.LeagueController = LeagueController()
         self.TeamController = TeamController()
-        
-        #self.NewsController = NewsController()
+        self.NewsController = NewsController()
+        self.PlayerController = PlayerController()
 
 
     def Menu(self):
@@ -33,7 +34,10 @@ class MainController:
             self.passToLeague()
         elif option == '2':
             self.passToTeam()
-
+        elif option == '3':
+            self.passToNews()
+        elif option == '4':
+            self.passToPlayer()
 
     def passToLeague(self):
         self.LeagueController.showConferenceStats()
@@ -41,14 +45,17 @@ class MainController:
     def passToTeam(self):
         self.TeamController.controller()
 
-    def printMain():
-        print('League stats')
+    def passToNews(self):
+        self.NewsController.showNews()
+    
+    def passToPlayer(self):
+        self.PlayerController.showPlayer()
 
-    def main():
-        mainController = MainController()
-        mainController.Menu()
-
+def main():
+    mainController = MainController()
+    mainController.Menu()
 
 if __name__ == '__main__':
     main()
+
 

@@ -1,31 +1,12 @@
 import requests
 import json
+from Helper.ApiCaller import ApiCaller
 
 #model class for the team option
 class TeamModel:
     
     def __init__(self):
-        pass
-
-    #made a custom api call method to return the api json file to a dictionary
-    def makeApiCall(self, url, parameters):
-
-        #information for the api
-        headers = {
-            "X-RapidAPI-Key": "de229dde0cmsh61bafd93b3a54afp18db1djsn21ebcafe56ad",
-            "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
-        }
-
-        response = requests.get(url, headers=headers, params=parameters)
-
-        #if api fails/cant be accessed
-        if response.status_code != 200:
-            return False
-
-        #converting json file to a dictionary
-        arr = json.loads(json.dumps(response.json()))
-
-        return arr
+        self.ApiCaller = ApiCaller()
 
     #this is to clean the response of the API as the result it returns includes players that aren't active on the roster
     def getCurrentPlayers(self, players):
@@ -73,7 +54,7 @@ class TeamModel:
     def getTeamPlayers(self, teamName):
 
         #the api we need uses team id to query, but we want the user to enter the name of the team, so we have to use this api to get the team id from the team name
-        teamArr = self.makeApiCall("https://api-nba-v1.p.rapidapi.com/teams", {"name":str(teamName)})
+        teamArr = self.ApiCaller.rapidApiCalltoDict("https://api-nba-v1.p.rapidapi.com/teams", {"name":str(teamName)})
         
         #if api doesnt work
         if teamArr == False:
@@ -86,7 +67,7 @@ class TeamModel:
         #get the team id and use it as a parameter in the next api call
         teamID = teamArr.get("response")[0].get("id")
 
-        playerArr = self.makeApiCall("https://api-nba-v1.p.rapidapi.com/players", {"team":str(teamID),"season":"2021"})
+        playerArr = self.ApiCaller.rapidApiCalltoDict("https://api-nba-v1.p.rapidapi.com/players", {"team":str(teamID),"season":"2021"})
 
         return self.getCurrentPlayers(playerArr.get("response"))
 

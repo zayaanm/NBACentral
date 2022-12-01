@@ -12,14 +12,8 @@ class LeagueModel:
         self.conferenceStats = []
         self.apiCaller = ApiCaller()
 
-    def getPlayerStats(self):
-        return self.playerStats
-
     def getConferenceStats(self):
         return self.conferenceStats
-
-    def findPlayerStats(self):
-        pass
 
     def findConferenceStats(self,year,conference):
         teamStats = []
