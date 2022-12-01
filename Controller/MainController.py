@@ -4,6 +4,7 @@ sys.path.append(parentddir)
 from Model.MainModel import MainModel
 from View.MainView import MainView
 from Controller.LeagueController import LeagueController
+from Controller.TeamController import TeamController
 #from Controller.NewsController import NewsController
 
 
@@ -14,6 +15,7 @@ class MainController:
         self.MainView = MainView()
         self.MainModel = MainModel()
         self.LeagueController = LeagueController()
+        self.TeamController = TeamController()
         
         #self.NewsController = NewsController()
 
@@ -29,10 +31,15 @@ class MainController:
     def selectController(self, option):
         if option == '1':
             self.passToLeague()
+        elif option == '2':
+            self.passToTeam()
 
 
     def passToLeague(self):
         self.LeagueController.showConferenceStats()
+
+    def passToTeam(self):
+        self.TeamController.controller()
 
 
 def main():
