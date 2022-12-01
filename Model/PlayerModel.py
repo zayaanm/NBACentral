@@ -12,42 +12,57 @@ class PlayerModel:
     def __init__(self):
         pass
 
-    def setPlayer(self, pName):
+    def setPlayer(self, inp):
+        pArray = self.APICall("https://api-nba-v1.p.rapidapi.com/players", {"name": str(inp[0]), "team": str(inp[1]), "season": "2021"})
 
-        per = {"name": str(pName), "team": "1", "season": "2021"}
+        if pArray == False:
+            return 0
 
-        pArray = self.APICall(per)
+        # if the player does not exist
+        if len(pArray.get("response")) == 0:
+            return 1
 
-        print(pArray)
+        playerIn = pArray.get("response")
+        player = []
+        pArray = []
+        for x in playerIn:      #organizing information
+            if x.get("nba").get("start") != 0 and "standard" in x.get("leagues") and x.get("leagues").get(
+                    "standard").get("active") == True:
+                player = []
 
-        if(pArray == False):
-            return False
+                player.append(x.get("firstname"))
+                player.append(x.get("lastname"))
+                player.append(x.get("birth").get("date"))
+                player.append(x.get("birth").get("country"))
 
-        self.name = 'y'
-        self.pos = "y"
-        self.age = "y"
-        self.team = "y"
-        self.num = "y"
-        self.hgt = "y"
-        self.pts = "y"
-        self.ats = "y"
-        self.stls = "y"
-        self.rbs = "y"
-        self.blks = "y"
-        self.tos = "y"
-        self.pm = "y"
+                if x.get("height").get("feets") is not None and x.get("height").get("inches") is not None:
+                    player.append(str(x.get("height").get("feets")) + "'" + str(x.get("height").get("inches")))
+                else:
+                    continue
 
-        return True
+                if x.get("weight").get("pounds") is not None:
+                    player.append(str(x.get("weight").get("pounds")))
+                else:
+                    continue
 
-    def APICall(self, parameters):
+                if x.get("leagues").get("standard").get("jersey") is not None:
+                    player.append(x.get("leagues").get("standard").get("jersey"))
+                else:
+                    continue
+
+                player.append(x.get("leagues").get("standard").get("pos"))
+                pArray.append(player)
+
+        return pArray
+
+    def APICall(self, url, para):       #literally makes the API call
 
         headers = {
             "X-RapidAPI-Key": "bc1b759fdfmshb77a2031d4430cbp1169cfjsn62a876e90d2a",
             "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
         }
 
-        response = requests.get("https://api-nba-v1.p.rapidapi.com/players", headers=headers, params=parameters)
-        print(response.text)
+        response = requests.get(url, headers=headers, params=para)
 
         if response.status_code != 200:
             return False
@@ -55,42 +70,3 @@ class PlayerModel:
         pArray = json.loads(json.dumps(response.json()))
 
         return pArray
-
-    def getName(self):
-        return self.name
-
-    def getPosition(self):
-        return self.pos
-
-    def getAge(self):
-        return self.age
-
-    def getTeam(self):
-        return self.team
-
-    def getNumber(self):
-        return self.num
-
-    def getHeight(self):
-        return self.hgt
-
-    def getPoints(self):
-        return self.pts
-
-    def getAssists(self):
-        return self.ats
-
-    def getSteals(self):
-        return self.stls
-
-    def getRebounds(self):
-        return self.rbs
-
-    def getBlocks(self):
-        return self.blks
-
-    def getTurnOvers(self):
-        return self.tos
-
-    def getPlusMinus(self):
-        return self.pm

@@ -17,20 +17,18 @@ class PlayerController:
         self.inp = self.pView.promptUser()
 
     def setModel(self):
-        self.worked = self.pMod.setPlayer(self.inp)
+        self.pArray = self.pMod.setPlayer(self.inp)
+
+    def printPlayer(self):
+        self.pView.printPlayer(self.pArray)
 
     def getInput(self):
         return self.inp
 
-    def printPlayer(self):
-        self.pView.printPlayer(self.pMod)
-
-    def getWorked(self):
-        return self.worked
-
 cont = PlayerController()
 cont.namePrompt()
-cont.setModel()
-if(cont.getWorked() == True):
+while(cont.getInput() != False):
+    cont.setModel()
     cont.printPlayer()
+    cont.namePrompt()
 
