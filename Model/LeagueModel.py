@@ -6,7 +6,6 @@ sys.path.append(parentddir)
 class LeagueModel:
 
     def __init__(self,ApiCaller):
-        self.playerStats = 'player stats'
         self.conferenceStats = []
         self.apiCaller = ApiCaller
 
