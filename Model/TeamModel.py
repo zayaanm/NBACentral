@@ -1,7 +1,3 @@
-import requests
-import json
-from Helper.ApiCaller import ApiCaller
-
 #model class for the team option
 class TeamModel:
     
