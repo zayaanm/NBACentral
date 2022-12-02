@@ -45,11 +45,6 @@ class LeagueView:
 
         return conference
 
-
-    def displayPlayerInfo(self,info):
-        print('Here is the League Player info:\n' + info)
-
-
     def displayConferenceInfo(self,info):
         conferenceTable = PrettyTable()
 
