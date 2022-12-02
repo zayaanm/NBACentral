@@ -18,5 +18,5 @@ class NewsView:
         print(news)
 
 
-    def displayTeamNews(self, teamName, news):
+    def displayTeamNews(self, news):
         print(news)

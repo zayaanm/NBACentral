@@ -11,6 +11,7 @@ class NewsController:
 
     def showNews(self):
         newsPrompt = self.NewsView.getAllOrTeamPrompt()
+        
         if (newsPrompt == '1'):
             self.NewsModel.pullAllNews()
             info = self.NewsModel.getAllNews()
@@ -20,7 +21,7 @@ class NewsController:
             teamName = self.NewsView.getTeamNamePrompt()
             self.NewsModel.pullTeamNews(teamName)
             info = self.NewsModel.getTeamNews()
-            self.NewsView.displayTeamNews(teamName, info)
+            self.NewsView.displayTeamNews(info)
 
         if(newsPrompt == '3'):
             pass
