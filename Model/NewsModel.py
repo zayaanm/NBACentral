@@ -5,8 +5,8 @@ sys.path.append(parentddir)
 from Helper.ApiCaller import ApiCaller
 
 class NewsModel:
-    def __init__(self):
-        self.ApiCaller = ApiCaller()
+    def __init__(self,ApiCaller):
+        self.ApiCaller = ApiCaller
         self.allNews = []
         self.teamNews = []
 

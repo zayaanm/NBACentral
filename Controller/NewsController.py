@@ -5,9 +5,9 @@ from View.NewsView import NewsView
 from Model.NewsModel import NewsModel
 
 class NewsController:
-    def __init__(self):
+    def __init__(self,ApiCaller):
         self.NewsView = NewsView()
-        self.NewsModel = NewsModel()
+        self.NewsModel = NewsModel(ApiCaller)
 
     def showNews(self):
         newsPrompt = self.NewsView.getAllOrTeamPrompt()
