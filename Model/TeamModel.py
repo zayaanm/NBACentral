@@ -5,8 +5,8 @@ from Helper.ApiCaller import ApiCaller
 #model class for the team option
 class TeamModel:
     
-    def __init__(self):
-        self.ApiCaller = ApiCaller()
+    def __init__(self,ApiCaller):
+        self.ApiCaller = ApiCaller
 
     #this is to clean the response of the API as the result it returns includes players that aren't active on the roster
     def getCurrentPlayers(self, players):

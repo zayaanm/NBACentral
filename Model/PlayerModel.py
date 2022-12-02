@@ -5,8 +5,8 @@ from Helper.ApiCaller import ApiCaller
 
 class PlayerModel:
 
-    def __init__(self):
-        self.ApiCaller = ApiCaller()
+    def __init__(self,ApiCaller):
+        self.ApiCaller = ApiCaller
         
 
     def setPlayer(self, inp):

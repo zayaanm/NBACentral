@@ -7,18 +7,18 @@ from Controller.LeagueController import LeagueController
 from Controller.TeamController import TeamController
 from Controller.NewsController import NewsController
 from Controller.PlayerController import PlayerController
-
-
+from Helper.ApiCaller import ApiCaller
 
 class MainController:
 
     def __init__(self):
+        self.ApiCaller = ApiCaller()
         self.MainView = MainView()
         self.MainModel = MainModel()
-        self.LeagueController = LeagueController()
-        self.TeamController = TeamController()
-        self.NewsController = NewsController()
-        self.PlayerController = PlayerController()
+        self.LeagueController = LeagueController(self.ApiCaller)
+        self.TeamController = TeamController(self.ApiCaller)
+        self.NewsController = NewsController(self.ApiCaller)
+        self.PlayerController = PlayerController(self.ApiCaller)
 
 
     def Menu(self):

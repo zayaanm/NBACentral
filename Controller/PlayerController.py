@@ -1,6 +1,3 @@
-#Controller for Player View
-#Aidan David (251083708)
-
 import sys, os
 parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 sys.path.append(parentddir)
@@ -9,9 +6,9 @@ from Model.PlayerModel import PlayerModel
 
 class PlayerController:
 
-    def __init__(self):
+    def __init__(self,ApiCaller):
         self.pView = PlayerView()
-        self.pMod = PlayerModel()
+        self.pMod = PlayerModel(ApiCaller)
 
     def namePrompt(self):
         self.inp = self.pView.promptUser()

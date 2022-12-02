@@ -6,9 +6,9 @@ from Model.LeagueModel import LeagueModel
 
 class LeagueController:
 
-    def __init__(self):
+    def __init__(self,ApiCaller):
         self.LeagueView = LeagueView()
-        self.LeagueModel = LeagueModel()
+        self.LeagueModel = LeagueModel(ApiCaller)
 
     def showConferenceStats(self):
         year = self.LeagueView.getYearPrompt()
