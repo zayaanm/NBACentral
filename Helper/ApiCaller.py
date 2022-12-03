@@ -9,7 +9,7 @@ class ApiCaller:
     
     def __init__(self):
         config = ''
-        with open("config.json", "r") as f:
+        with open("../config.json", "r") as f:
             config = json.load(f)
 
         self.rapidApiKey = config["rapidApiKey"]["key"]

@@ -6,23 +6,23 @@ from Model.PlayerModel import PlayerModel
 
 class PlayerController:
 
-    def __init__(self,ApiCaller):
+    def __init__(self,ApiCaller):       #constructor
         self.pView = PlayerView()
         self.pMod = PlayerModel(ApiCaller)
 
-    def namePrompt(self):
+    def namePrompt(self):               #gets user enter teh player name
         self.inp = self.pView.promptUser()
 
-    def setModel(self):
+    def setModel(self):                 #sets the model to the specific player
         self.pArray = self.pMod.setPlayer(self.inp)
 
-    def printPlayer(self):
+    def printPlayer(self):              #the player view prints the information
         self.pView.printPlayer(self.pArray)
 
-    def getInput(self):
+    def getInput(self):                 #returns the user's input
         return self.inp
     
-    def showPlayer(self):
+    def showPlayer(self):               #performs player as intended
         self.namePrompt()
         self.setModel()
         self.printPlayer()
