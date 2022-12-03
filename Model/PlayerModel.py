@@ -4,13 +4,14 @@ sys.path.append(parentddir)
 
 class PlayerModel:
 
-    def __init__(self,ApiCaller):
+    def __init__(self,ApiCaller):       #constructor
         self.ApiCaller = ApiCaller
         
 
-    def setPlayer(self, inp):
+    def setPlayer(self, inp):           #sets the player based on their name
         pArray = self.ApiCaller.rapidApiCalltoDict("https://api-nba-v1.p.rapidapi.com/players", {"name": str(inp[0]), "team": str(inp[1]), "season": "2021"})
 
+        #API call failure
         if pArray == False:
             return 0
 
@@ -49,4 +50,4 @@ class PlayerModel:
                 player.append(x.get("leagues").get("standard").get("pos"))
                 pArray.append(player)
 
-        return pArray
+        return pArray       #when successful, player data is returned

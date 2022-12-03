@@ -4,7 +4,7 @@ sys.path.append(parentddir)
 from prettytable import PrettyTable
 
 class PlayerView:
-    def promptUser(self):
+    def promptUser(self):       #getting the user to input the name/teamid
         inp = []
         inp.append(input ("Enter the last name of the player you wish to search for (q to return to main menu): "))
 
@@ -19,7 +19,7 @@ class PlayerView:
 
         return inp
 
-    def printPlayer(self, pArray):
+    def printPlayer(self, pArray):      #the found info is displayed or a warning
         if pArray == 0:
             print("Could not get information at this time, please try again later\n")
 
