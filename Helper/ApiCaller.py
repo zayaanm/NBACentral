@@ -5,6 +5,7 @@ import requests
 parentddir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 sys.path.append(parentddir)
 
+# Class to call multiple API's and return data accordingly
 class ApiCaller:
     
     def __init__(self):

@@ -5,10 +5,12 @@ from View.NewsView import NewsView
 from Model.NewsModel import NewsModel
 
 class NewsController:
+    # Constructor of the NewsController class
     def __init__(self,ApiCaller):
         self.NewsView = NewsView()
         self.NewsModel = NewsModel(ApiCaller)
 
+    # Method that controls the flow of user inputs and screens that are displayed
     def showNews(self):
         newsPrompt = self.NewsView.getAllOrTeamPrompt()
         
